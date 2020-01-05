@@ -13,7 +13,7 @@ case "$(uname -m)" in
 				fi
 				if test ! -e ${HOME}/.config/starship.toml; then
 					t_chkdir ${HOME}/.config
-					t_status_exec "Installing: starship.toml" "cp ${HOME}/.profile.d/files/${thwap_id}-starship.toml ${HOME}/.config/"
+					t_status_exec "Installing: starship.toml" "cp ${HOME}/.profile.d/files/${thwap_id}-starship.toml ${HOME}/.config/starship.toml"
 				fi
 				eval $(starship init $(basename ${THWAP_SHELL}))
 				;;
