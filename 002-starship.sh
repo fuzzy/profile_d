@@ -1,4 +1,4 @@
-thwap_id="003"
+thwap_id="002"
 case "$(uname -m)" in
 	(x86_64|amd64)
 		case "${THWAP_STARSHIP}" in
