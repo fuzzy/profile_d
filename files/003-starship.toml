@@ -1,0 +1,28 @@
+[python]
+symbol = "Py:"
+
+[golang]
+symbol = "Go:"
+
+[battery]
+full_symbol = "F"
+charging_symbol = "c"
+discharging_symbol = "D"
+disabled = false
+
+[[battery.display]]
+threshold = 20
+style = "bold red"
+
+[[battery.display]]
+threshold = 70
+style = "bold yellow"
+
+[memory_usage]
+show_percentage = true
+show_swap = true
+threshold = -1
+symbol = "Mem:"
+separator = "/"
+style = "bold dimmed green"
+disabled = false
