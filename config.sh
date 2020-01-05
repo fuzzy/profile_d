@@ -59,7 +59,7 @@ THWAP_VLANG="false"
 ##### Vim knobs
 
 # If you wish to use the Vim support set this
-THWAP_VIMRT="false"
+THWAP_VIMRT="true"
 
 ##### Emacs knobs
 

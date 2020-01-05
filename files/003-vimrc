@@ -1,0 +1,101 @@
+filetype plugin on
+set autoindent
+set smartindent
+set cindent
+set number
+set cursorline
+set tabstop=2
+set shiftwidth=2
+set guioptions -=T
+colo desert
+syn on
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" T.H.W.A.P. configuration
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" file opener
+map <C-t>o :edit 
+" start terminal
+map <C-t>t :terminal<CR>
+" horizontal split
+map <C-t>sh :split<CR>
+map <C-t>Sh :split 
+" vertical split
+map <C-t>sv :vsplit<CR>
+map <C-t>Sv :vsplit 
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Plugged configuration
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+call plug#begin('~/.vim/plugged')
+
+Plug 'scrooloose/nerdtree'
+Plug 'scrooloose/nerdcommenter'
+Plug 'https://github.com/junegunn/vim-github-dashboard.git'
+Plug 'ollykel/v-vim'
+Plug 'scrooloose/vim-slumlord'
+Plug 'aklt/plantuml-syntax'
+Plug 'hashivim/vim-terraform'
+Plug 'jreybert/vimagit'
+Plug 'pearofducks/ansible-vim'
+Plug 'danishprakash/vim-docker'
+Plug 'godlygeek/tabular'
+
+call plug#end()
+map <C-t>pi :PlugInstall<CR>
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" NerdTree configuration
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+map <C-t>n :NERDTreeToggle<CR>
+
+" Add spaces after comment delimiters by default
+let g:NERDSpaceDelims = 1
+" Use compact syntax for prettified multi-line comments
+let g:NERDCompactSexyComs = 1
+" Align line-wise comment delimiters flush left instead of following code indentation
+let g:NERDDefaultAlign = 'left'
+" Set a language to use its alternate delimiters by default
+let g:NERDAltDelims_java = 1
+" Add your own custom formats or override the defaults
+let g:NERDCustomDelimiters = { 'c': { 'left': '/**','right': '*/' } }
+" Allow commenting and inverting empty lines (useful when commenting a region)
+let g:NERDCommentEmptyLines = 1
+" Enable trimming of trailing whitespace when uncommenting
+let g:NERDTrimTrailingWhitespace = 1
+" Enable NERDCommenterToggle to check all selected lines is commented or not
+let g:NERDToggleCheckAllLines = 1
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" ViMaGit configuration
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+map <C-t>g :Magit<CR>
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" ansible-vim configuration
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+au BufRead,BufNewFile */play*/*.yml set filetype=yaml.ansible
+au BufRead,BufNewFile */play*/*.yaml set filetype=yaml.ansible
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" vim-docker configuration
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+map <C-t>dd :DockerDocBrowse<CR>
+map <C-t>dh :DockerHubBrowse<CR>
+map <C-t>dp :DockerPush 
+map <C-t>db :DockerBuild -t 
+map <C-t>dt :DockerTag 
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" tabularize configuration
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+map <C-t>tp :Tabularize /
