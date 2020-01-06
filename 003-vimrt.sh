@@ -1,4 +1,4 @@
-thwap_id="004"
+thwap_id="003"
 case "${THWAP_VIMRT}" in
 	(true)
 		cd ${HOME}/.profile.d

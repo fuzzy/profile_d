@@ -24,6 +24,10 @@ t_colmap() {
 	done
 }
 
+thwap_reload() {
+	source ${HOME}/.profile
+}
+
 t_info() {
 	printf "[ ${tb_green}OK${tc_end} ] ${*}\n"
 }

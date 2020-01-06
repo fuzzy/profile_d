@@ -9,7 +9,7 @@ if test -z "${THWAP_SSH_IDENT}"; then
 			(true|"")
 				# Well we don't have a default key, and we don't have a running
 				# ssh-agent. So let's create a key shall we?
-				t_info "Creating new ${THWAP_SSH_KEY_SIZE} bit ssh key."
+				t_info "Creating  : ${THWAP_SSH_KEY_SIZE} bit ssh key."
 				ssh-keygen -t rsa -b ${THWAP_SSH_KEY_SIZE}
 				;;
 			(*)
@@ -24,13 +24,13 @@ test -e ${THWAP_SSH_ENV} && source ${THWAP_SSH_ENV}
 SSHPID=$(ps aux|grep ${SSH_AGENT_PID}|grep -v grep|grep ssh|grep ${USER})
 
 if test -z "${SSHPID}"; then
-	t_info "Starting ssh-agent"
+	t_info "Starting  : ssh-agent"
 	eval $(ssh-agent -s|grep -v echo|tee ${THWAP_SSH_ENV})
 fi
 
 SSHID=$(ssh-add -l|grep ${THWAP_SSH_IDENT})
 if test -z "${SSHID}"; then
-	t_info "Adding ${THWAP_SSH_IDENT} to ssh-agent"
+	t_info "AddIdent  : ${THWAP_SSH_IDENT} to ssh-agent"
 	ssh-add
 fi
 

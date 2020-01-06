@@ -54,7 +54,8 @@ THWAP_STARSHIP_VERSION="0.32.2"
 
 # Setting this to true will turn on the local vlang
 # build and support.
-THWAP_VLANG="false"
+THWAP_VLANG="true"
+THWAP_VLANG_BASE="${HOME}/.local/vlang"
 
 ##### Vim knobs
 
