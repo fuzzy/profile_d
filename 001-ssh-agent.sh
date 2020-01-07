@@ -31,6 +31,6 @@ fi
 SSHID=$(ssh-add -l|grep ${THWAP_SSH_IDENT})
 if test -z "${SSHID}"; then
 	t_info "AddIdent  : ${THWAP_SSH_IDENT} to ssh-agent"
-	ssh-add
+	ssh-add 2>/dev/null
 fi
 
