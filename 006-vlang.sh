@@ -1,4 +1,5 @@
 thwap_id="006"
+if test "${THWAP_SHELL_INTERACTIVE}" = "true"; then
 case "${THWAP_VLANG}" in
 	(true)
 		if test ! -d ${THWAP_VLANG_BASE}; then
@@ -13,3 +14,4 @@ case "${THWAP_VLANG}" in
 		fi
 		;;
 esac
+fi

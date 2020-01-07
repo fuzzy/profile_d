@@ -1,4 +1,8 @@
-export TERM_COLS=$(tput cols)
+case "${THWAP_SHELL_INTERACTIVE}" in
+	(true)
+		export TERM_COLS=$(tput cols)
+		;;
+esac
 
 tc_black="\033[30m"
 tb_black="\033[1;30m"
@@ -53,8 +57,15 @@ t_status_exec() {
 }
 
 t_trunc() {
-	trunc=$((${TERM_COLS} - $((${1}+4))))
-	echo "$(echo ${2}|cut -c 1-${trunc})..."
+	case "${THWAP_SHELL_INTERACTIVE}" in
+		(true)
+			trunc=$((${TERM_COLS} - $((${1}+4))))
+			echo "$(echo ${2}|cut -c 1-${trunc})..."
+			;;
+		(*)
+			echo "${2}"
+			;;
+	esac
 }
 
 # This function will test for a directories existence

@@ -1,5 +1,5 @@
 go_base_url="https://golang.org/dl/"
-
+if test "${THWAP_SHELL_INTERACTIVE}" = "true"; then
 case "${THWAP_GOLANG}" in
 	(true)
 		t_chkdir ${THWAP_GOLANG_BASE}
@@ -43,3 +43,4 @@ case "${THWAP_GOLANG}" in
 		export GOPATH=${THWAP_GOLANG_BASE}/path
 		;;
 esac
+fi

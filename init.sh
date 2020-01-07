@@ -1,10 +1,29 @@
 set -a
+SSH_ASKPASS=/usr/bin/ssh-askpass
+
 # Shell detection
 if test ! -z "${ZSH_NAME}"; then
 	THWAP_SHELL=zsh
 elif test ! -z "${BASH}"; then
 	THWAP_SHELL=bash
 fi
+
+case "${THWAP_SHELL}" in
+	(zsh)
+		if [[ -o login ]]; then
+			THWAP_SHELL_INTERACTIVE="true"
+		else
+			THWAP_SHELL_INTERACTIVE="false"
+		fi
+		;;
+	(bash)
+		if [[ $- == *i* ]]; then
+			THWAP_SHELL_INTERACTIVE="true"
+		else
+			THWAP_SHELL_INTERACTIVE="false"
+		fi
+		;;
+esac
 
 # Some base utility detection
 if test -z "${THWAP_CMD_FETCH}"; then

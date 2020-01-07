@@ -15,7 +15,11 @@ case "$(uname -m)" in
 					t_chkdir ${HOME}/.config
 					t_status_exec "Installing: starship.toml" "cp ${HOME}/.profile.d/files/${thwap_id}-starship.toml ${HOME}/.config/starship.toml"
 				fi
-				eval $(starship init $(basename ${THWAP_SHELL}))
+				case "${THWAP_SHELL_INTERACTIVE}" in
+					(true)
+						eval $(starship init $(basename ${THWAP_SHELL}))
+						;;
+				esac
 				;;
 		esac
 		;;
