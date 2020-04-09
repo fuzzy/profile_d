@@ -24,6 +24,6 @@ case "$(uname -m)" in
 		esac
 		;;
 	(*)
-		t_error "You are using an unsupported architecture."
+		t_error "STARSHIP: You are using an unsupported architecture."
 		;;
 esac
