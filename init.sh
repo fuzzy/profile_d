@@ -45,7 +45,7 @@ test -e ${HOME}/.profile.d/libthwap.sh && source ${HOME}/.profile.d/libthwap.sh
 t_chkdir ${THWAP_BINDIR}
 add2path ${THWAP_BINDIR}
 
-for fn in ${HOME}/.profile.d/???-*.sh; do
+for fn in ${HOME}/.profile.d/init.d/???-*.sh; do
 	source ${fn}
 done
 
