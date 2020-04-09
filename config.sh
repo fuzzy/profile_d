@@ -19,7 +19,7 @@ THWAP_BKUP=${HOME}/.profile.d/.bkups
 THWAP_SSH_ENV=${HOME}/.ssh/ssh.env
 
 # This sets the identity of the main SSH pub key
-THWAP_SSH_IDENT=fuzzy@kerplop
+THWAP_SSH_IDENT=${USER}@$(hostname -s)
 
 # Should we create keys if one is not present
 THWAP_SSH_KEY_CREATE="true"
@@ -60,7 +60,7 @@ THWAP_VLANG_BASE="${HOME}/.local/vlang"
 ##### Vim knobs
 
 # If you wish to use the Vim support set this
-THWAP_VIMRT="true"
+THWAP_VIMRT="false"
 
 ##### Emacs knobs
 
