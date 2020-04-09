@@ -24,7 +24,7 @@ tc_end="\033[0m"
 
 t_colmap() {
 	for i in 0 1 2 3 4 5 6 7; do
-		printf "3${i} = \033[3${i}mTEST\033[0m \033[1;3${i}mTEST\033[0m\n"
+		printf "3${i} = \033[3${i}mTEST\033[0m \033[1;3${i}mTEST\033[0m\n" >/dev/stderr
 	done
 }
 
@@ -33,27 +33,28 @@ thwap_reload() {
 }
 
 t_info() {
-	printf "[ ${tb_green}OK${tc_end} ] ${*}\n"
+	printf "[ ${tb_green}OK${tc_end} ] ${*}\n" >/dev/stderr
 }
 
 t_warn() {
-	printf "[${tb_yellow}WARN${tc_end}] ${*}\n"
+	printf "[${tb_yellow}WARN${tc_end}] ${*}\n" >/dev/stderr
 }
 
 t_debug() {
-	printf "[${tb_cyan}DEBG${tc_end}] ${*}\n"
+	printf "[${tb_cyan}DEBG${tc_end}] ${*}\n" >/dev/stderr
 }
 
 t_error() {
-	printf "[${tb_red}FAIL${tc_end}] ${*}\n"
+	printf "[${tb_red}FAIL${tc_end}] ${*}\n" >/dev/stderr
 }
 
 t_status_exec() {
 	r_true="[ ${tb_green}OK${tc_end} ]"
 	r_false="[${tb_red}FAIL${tc_end}]"
-	printf "[    ] ${1}\r"
-	/bin/sh -c "${2} 1>/tmp/th_exec.log 2>/tmp/th_exec.err"
-	test ${?} -eq 0 && printf "${r_true}\n" || printf "${r_false}\n"
+	printf "[    ] ${1}\r" >/dev/stderr
+  printf "\nCOMMAND: ${2}\n" >>/tmp/th_exec.log
+	/bin/sh -c "${2} 1>>/tmp/th_exec.log 2>>/tmp/th_exec.err"
+	test ${?} -eq 0 && printf "${r_true}\n" >/dev/stderr || printf "${r_false}\n" >/dev/stderr
 }
 
 t_trunc() {
@@ -82,9 +83,9 @@ t_chkdir() {
 t_fetch() {
 	r_true="[ ${tb_green}OK${tc_end} ]"
 	r_false="[${tb_red}FAIL${tc_end}]"
-	printf "[    ] Fetching  : $(t_trunc 19 "${1}")\r"
+	printf "[    ] Fetching  : $(t_trunc 19 "${1}")\r" >/dev/stderr
 	/bin/sh -c "${THWAP_CMD_FETCH} ${1} >${2}"
-	test ${?} -eq 0 && printf "${r_true}\n" || printf "${r_false}\n"
+	test ${?} -eq 0 && printf "${r_true}\n" >/dev/stderr || printf "${r_false}\n" >/dev/stderr
 }
 
 # This function just wraps generating random strings
